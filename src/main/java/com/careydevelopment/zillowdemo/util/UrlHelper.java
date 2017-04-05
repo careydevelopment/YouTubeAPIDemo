@@ -4,8 +4,6 @@ import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
 
-import com.careydevelopment.zillowdemo.model.ZillowSearchResults;
-
 public class UrlHelper {
 
 	/**
