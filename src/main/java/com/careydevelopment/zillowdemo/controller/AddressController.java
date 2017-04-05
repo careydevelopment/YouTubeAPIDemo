@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.careydevelopment.zillowdemo.model.Address;
+import com.careydevelopment.zillowdemo.model.ZillowSearchResults;
+import com.careydevelopment.zillowdemo.util.ZillowApiHelper;
 
 
 @Controller
@@ -35,8 +37,17 @@ public class AddressController {
             return "enterAddress";
         }
 		
-		//if there are no errors, show results
-		return "showResults";
+		//get the search results object
+		ZillowSearchResults results = ZillowApiHelper.getSearchResults(address);
+		
+		//put it in the model
+		model.addAttribute("results", results);
+		
+		//add the address to the model as well
+		model.addAttribute("address", address);
+		
+		//get out
+		return "showZillowResults";
 	}
 		
 	

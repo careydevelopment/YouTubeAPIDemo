@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!--<![endif]-->
+
+    <head>
+        <title>Zillow Search Results | Carey Development Demos</title>
+        <meta content="Zillow Search Results" name="description" />
+        <object th:include="/fragments/head :: head" th:remove="tag"></object>
+    </head>
+
+    <body class="page-container-bg-solid">
+		<div th:include="fragments/topmenuheader :: header"></div>
+        <div class="page-container">
+            <div class="page-content-wrapper">
+                <div class="page-head" style="background-color:#eff3f8;padding-top:40px">
+                    <div class="container">
+                    	<div class="row">
+                             <div class="col-md-4">
+                                 <div class="portlet box blue ">
+                                     <div class="portlet-title">
+                                         <div class="caption">
+                                             <i class="icon-home"></i>
+                                             <span class="caption-subject" style="position:relative;top:2px">Zillow Search Results</span>
+                                         </div>
+                                     </div>    
+                                     <div class="portlet-body">
+	                                     <div class="todo-tasklist-item todo-tasklist-item-border-green">
+	                                         <div class="todo-tasklist-item-title"> Address </div>
+	                                         <div class="todo-tasklist-item-text" th:text="${address.streetAddress}"> </div>
+	                                         <div class="todo-tasklist-item-text" th:text="${address.zip}"> </div>
+	                                     </div>
+	                                     <div th:if="${results != null}">
+											 <div class="row static-info">
+		                                       	<div class="col-md-5 name"> Value: </div>
+		                                        <div class="col-md-7 value" th:text="${results.value}"></div>
+		                                     </div> 
+											 <div class="row static-info">
+		                                       	<div class="col-md-5 name"> Low Value: </div>
+		                                        <div class="col-md-7 value" th:text="${results.lowValue}"></div>
+		                                     </div> 
+		                                 	 <div class="row static-info">
+		                                       	<div class="col-md-5 name"> High Value: </div>
+		                                        <div class="col-md-7 value" th:text="${results.highValue}"></div>
+		                                     </div> 
+		                                     <div class="row static-info">
+		                                       	<div class="col-md-5 name"> Last Updated: </div>
+		                                        <div class="col-md-7 value" th:text="${results.lastUpdated}"></div>
+		                                     </div> 
+		                                     <div style="margin-top:30px">
+		                                     	<button type="button" class="btn btn-primary" th:onclick="'window.open(\'' + ${results.mapUrl} + '\',\'_blank\');'">View Map</button>
+		                                     	<button type="button" class="btn btn-primary" th:onclick="'window.open(\'' + ${results.comparablesUrl} + '\',\'_blank\');'">View Comps</button>
+		                                     	<button type="button" class="btn btn-primary" onclick="document.location='./enterAddress'">New Search</button>
+		                                     </div>
+	                                     </div>
+	                                     <div th:unless="${results != null}">
+	                                     	<div class="note note-danger">
+                                            	<h4 class="block">Problem</h4>
+                                                	<p>A problem occurred trying to retrieve valuation. This could be due to the fact that the address
+                                                	is invalid or there is a problem on Zillow's end.</p>
+                                            </div>
+                                            <button type="button" class="btn btn-primary" onclick="document.location='./enterAddress'">New Search</button>
+	                                     </div>
+                                     </div>
+                                 </div>
+     						</div>
+     					</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div th:include="fragments/homefooter :: footer"></div>
+    </body>
+</html>

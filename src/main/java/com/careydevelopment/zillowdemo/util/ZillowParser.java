@@ -2,6 +2,9 @@ package com.careydevelopment.zillowdemo.util;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.NumberFormat;
+import java.util.Currency;
+import java.util.Locale;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -21,6 +24,8 @@ public class ZillowParser {
 		
 		try {
 			Document doc = getDocument(is);
+			
+			//if the doc returned results...
 			if (validReturn(doc)) {
 				results = populateZillowSearchResults(doc);
 			}
@@ -32,16 +37,36 @@ public class ZillowParser {
 	}
 	
 	
+	/**
+	 * Creates the ZillowSearchResults object from the data in the XML doc
+	 */
 	private static ZillowSearchResults populateZillowSearchResults(Document doc) {
 		ZillowSearchResults results = new ZillowSearchResults();
 		
-		results.setValue(getTextNodeFromFirstNode(doc, "amount"));
-		results.setHighValue(getTextNodeFromFirstNode(doc,"high"));
-		results.setLowValue(getTextNodeFromFirstNode(doc,"low"));
+		results.setValue(formatCurrency(getTextNodeFromFirstNode(doc, "amount")));
+		results.setHighValue(formatCurrency(getTextNodeFromFirstNode(doc,"high")));
+		results.setLowValue(formatCurrency(getTextNodeFromFirstNode(doc,"low")));
 		results.setLastUpdated(getTextNodeFromFirstNode(doc,"last-updated"));
 		results.setZpid(getTextNodeFromFirstNode(doc,"zpid"));
+		results.setComparablesUrl(getTextNodeFromFirstNode(doc,"comparables"));
+		results.setMapUrl(getTextNodeFromFirstNode(doc,"mapthishome"));
 		
 		return results;
+	}
+	
+	
+	/**
+	 * This method takes a number and formats it for U.S. currency
+	 */
+	private static String formatCurrency(String num) {
+		String formattedNum = "";
+		
+		NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(Locale.US);
+		currencyFormatter.setMaximumFractionDigits(0);
+		
+		formattedNum = currencyFormatter.format(new Integer(num));
+				
+		return formattedNum;
 	}
 	
 	

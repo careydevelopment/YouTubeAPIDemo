@@ -7,6 +7,8 @@ public class ZillowSearchResults {
 	private String lowValue;
 	private String highValue;
 	private String lastUpdated;
+	private String mapUrl;
+	private String comparablesUrl;
 	
 	public String getZpid() {
 		return zpid;
@@ -38,8 +40,16 @@ public class ZillowSearchResults {
 	public void setLastUpdated(String lastUpdated) {
 		this.lastUpdated = lastUpdated;
 	}
-	
-	
-	
-
+	public String getMapUrl() {
+		return mapUrl;
+	}
+	public void setMapUrl(String mapUrl) {
+		this.mapUrl = mapUrl;
+	}
+	public String getComparablesUrl() {
+		return comparablesUrl;
+	}
+	public void setComparablesUrl(String comparablesUrl) {
+		this.comparablesUrl = comparablesUrl;
+	}
 }

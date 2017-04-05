@@ -24,11 +24,4 @@ public class UrlHelper {
 		
 		return is;
 	}
-		
-	
-	public static void main(String[] args) {
-		InputStream is = readUrlContents("https://www.zillow.com/webservice/GetSearchResults.htm?address=1300%20Teacup%20Spring%20Court&citystatezip=27587");
-		ZillowSearchResults results = ZillowParser.parseSearchResults(is);
-		System.err.println(results.getZpid() + " " + results.getLastUpdated() + " " + results.getLowValue() + " " + results.getValue());
-	}
 }
