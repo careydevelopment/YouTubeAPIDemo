@@ -1,4 +1,4 @@
-package com.careydevelopment.zillowdemo;
+package com.careydevelopment.youtubedemo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
