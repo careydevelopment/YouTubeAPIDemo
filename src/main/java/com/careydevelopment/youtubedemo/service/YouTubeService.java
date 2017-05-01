@@ -1,17 +1,17 @@
 package com.careydevelopment.youtubedemo.service;
 
-import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
 import com.careydevelopment.youtubedemo.model.YouTubeVideo;
-import com.google.api.client.googleapis.json.GoogleJsonResponseException;
-import com.google.api.client.http.HttpRequest;
-import com.google.api.client.http.HttpRequestInitializer;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.jackson2.JacksonFactory;
+import com.google.api.client.util.DateTime;
 import com.google.api.services.youtube.YouTube;
 import com.google.api.services.youtube.model.SearchListResponse;
 import com.google.api.services.youtube.model.SearchResult;
@@ -50,6 +50,8 @@ public class YouTubeService {
             //set the max results
             search.setMaxResults(MAX_SEARCH_RESULTS);
 
+            DateFormat df = new SimpleDateFormat("MMM dd, yyyy");
+            
             //perform the search and parse the results
             SearchListResponse searchResponse = search.execute();
             List<SearchResult> searchResultList = searchResponse.getItems();
@@ -58,9 +60,8 @@ public class YouTubeService {
             	   YouTubeVideo video = new YouTubeVideo();
             	   video.setTitle(result.getSnippet().getTitle());
             	   video.setUrl(buildVideoUrl(result.getId().getVideoId()));
-            	   video.setDescription(result.getSnippet().getDescription());
             	   video.setThumbnailUrl(result.getSnippet().getThumbnails().getDefault().getUrl());
-
+            	              	   
             	   videos.add(video);
                }
             }

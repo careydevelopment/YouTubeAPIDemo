@@ -4,7 +4,6 @@ public class YouTubeVideo {
 
 	private String title;
 	private String url;
-	private String description;
 	private String thumbnailUrl;
 	
 	public String getTitle() {
@@ -18,12 +17,6 @@ public class YouTubeVideo {
 	}
 	public void setUrl(String url) {
 		this.url = url;
-	}
-	public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
-		this.description = description;
 	}
 	public String getThumbnailUrl() {
 		return thumbnailUrl;
