@@ -49,11 +49,12 @@
                                                                   <img alt="" th:src="${video.thumbnailUrl}" />
                                                               </a>
                                                           </div>
+                                                          <div class="list-datetime bold uppercase font-blue" th:text="${video.publishDate}"></div>
                                                           <div class="list-item-content">
                                                               <h4 class="uppercase">
                                                               	<a th:href="${video.url}" target="_blank" th:text="${video.title}"></a>
                                                               </h4>
-                                                              <p></p>
+                                                              <p th:text="${video.description}"></p>
                                                           </div>	                                                    
                                                    </li>              
                                                   </ul>

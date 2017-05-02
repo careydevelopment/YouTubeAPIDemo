@@ -35,7 +35,7 @@ public class YouTubeService {
             YouTube.Search.List search = youtube.search().list("id,snippet");
             
             //set our credentials
-            String apiKey = "";
+            String apiKey = "[ENTER YOUR API KEY HERE]";
             search.setKey(apiKey);
             
             //set the search term
@@ -45,7 +45,7 @@ public class YouTubeService {
             search.setType("video");
 
             //set the fields that we're going to use
-            search.setFields("items(id/kind,id/videoId,snippet/title,snippet/thumbnails/default/url)");
+            search.setFields("items(id/kind,id/videoId,snippet/title,snippet/description,snippet/publishedAt,snippet/thumbnails/default/url)");
             
             //set the max results
             search.setMaxResults(MAX_SEARCH_RESULTS);
@@ -61,7 +61,14 @@ public class YouTubeService {
             	   video.setTitle(result.getSnippet().getTitle());
             	   video.setUrl(buildVideoUrl(result.getId().getVideoId()));
             	   video.setThumbnailUrl(result.getSnippet().getThumbnails().getDefault().getUrl());
-            	              	   
+            	   video.setDescription(result.getSnippet().getDescription());
+            	   
+            	   //parse the date
+            	   DateTime dateTime = result.getSnippet().getPublishedAt();
+            	   Date date = new Date(dateTime.getValue());
+            	   String dateString = df.format(date);
+            	   video.setPublishDate(dateString);
+            	   
             	   videos.add(video);
                }
             }

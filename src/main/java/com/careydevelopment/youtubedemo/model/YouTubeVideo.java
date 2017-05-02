@@ -5,6 +5,8 @@ public class YouTubeVideo {
 	private String title;
 	private String url;
 	private String thumbnailUrl;
+	private String publishDate;
+	private String description;
 	
 	public String getTitle() {
 		return title;
@@ -23,5 +25,17 @@ public class YouTubeVideo {
 	}
 	public void setThumbnailUrl(String thumbnailUrl) {
 		this.thumbnailUrl = thumbnailUrl;
+	}
+	public String getPublishDate() {
+		return publishDate;
+	}
+	public void setPublishDate(String publishDate) {
+		this.publishDate = publishDate;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
 	}
 }
