@@ -32,17 +32,11 @@
          <version>1.22.0</version>
     </dependency>
 	
-     <!-- <dependency>
-         <groupId>com.google.oauth-client</groupId>
-         <artifactId>google-oauth-client-jetty</artifactId>
-         <version>${project.oauth.version}</version>
-     </dependency>-->
-	
-     <dependency>
+    <dependency>
          <groupId>com.google.collections</groupId>
          <artifactId>google-collections</artifactId>
          <version>1.0</version>
-     </dependency>
+    </dependency>
 	
   </dependencies>
   

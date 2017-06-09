@@ -41,7 +41,7 @@
                                                     <label>Search:</label>                                                                
                                                     <div th:classappend="${#fields.hasErrors('queryTerm')} ? 'input-icon right' : ''">
                                                         <i th:if="${#fields.hasErrors('queryTerm')}" class="fa fa-exclamation tooltips" data-original-title="please enter a valid search term" data-container="body"></i>
-                                                        <input type="text" class="form-control" maxlength="64" th:value="*{queryTerm}" th:field="*{queryTerm}" placeholder="For example: tom brady"/>
+                                                        <input type="text" class="form-control" maxlength="64" th:field="*{queryTerm}" placeholder="For example: tom brady"/>
                                                         <span th:if="${#fields.hasErrors('queryTerm')}" class="help-block" th:errors="*{queryTerm}"></span>
                                                     </div>
                                                 </div>                                                                                              
